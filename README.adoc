@@ -1,0 +1,9 @@
+= WildFly Development Tools
+
+This project contains development tools for various WildFly projects.
+
+The `org.wildfly.tools:wildfly-parent` is a parent POM which adds minimal functionality to the
+`org.jboss:jboss-parent` POM.
+
+The `org.wildfly.tools:ide-config` contains resources for Eclipse formatting configuration files.
+These can be used in your IDE as well as in the `net.revelc.code.formatter:formatter-maven-plugin`.
