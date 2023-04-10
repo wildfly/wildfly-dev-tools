@@ -72,7 +72,7 @@
         <version.release.plugin>3.0.0-M6</version.release.plugin>
         <version.nexus.staging.maven.plugin>1.6.13</version.nexus.staging.maven.plugin>
         <repo.sonatype.url>https://oss.sonatype.org</repo.sonatype.url>
-        <sonatype.server.id>ossrh-wildfly</sonatype.server.id>
+        <sonatype.server.id>ossrh</sonatype.server.id>
         <autoReleaseAfterClose>false</autoReleaseAfterClose>
     </properties>
 
