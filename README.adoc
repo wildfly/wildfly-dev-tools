@@ -7,3 +7,12 @@ The `org.wildfly.tools:wildfly-parent` is a parent POM which adds minimal functi
 
 The `org.wildfly.tools:ide-config` contains resources for Eclipse formatting configuration files.
 These can be used in your IDE as well as in the `net.revelc.code.formatter:formatter-maven-plugin`.
+
+== Releasing
+
+Currently, releasing is a manual task. The versions should be manually updated and ideally commits and tags should be
+signed. This is not enforced at the moment.
+
+The default deployment server id for the settings.xml is `ossrh`. This can be overridden with the `sonatype.server.id`
+system property. In some cases this might need to be done as we currently release to the legacy https://oss.sonatype.org
+server.
