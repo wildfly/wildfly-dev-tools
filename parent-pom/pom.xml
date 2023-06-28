@@ -75,11 +75,6 @@
         <version.formatter.maven.plugin>2.23.0</version.formatter.maven.plugin>
         <version.impsort.maven.plugin>1.9.0</version.impsort.maven.plugin>
         <version.nexus.staging.maven.plugin>1.6.13</version.nexus.staging.maven.plugin>
-
-        <!-- Maven Central properties -->
-        <repo.sonatype.url>https://oss.sonatype.org</repo.sonatype.url>
-        <sonatype.server.id>ossrh-wildfly</sonatype.server.id>
-        <autoReleaseAfterClose>false</autoReleaseAfterClose>
     </properties>
 
     <build>
@@ -156,20 +151,31 @@
         </pluginManagement>
     </build>
 
-    <distributionManagement>
-        <snapshotRepository>
-            <id>${sonatype.server.id}</id>
-            <url>${repo.sonatype.url}/content/repositories/snapshots</url>
-        </snapshotRepository>
-        <repository>
-            <id>${sonatype.server.id}</id>
-            <url>${repo.sonatype.url}/service/local/staging/deploy/maven2/</url>
-        </repository>
-    </distributionManagement>
-
     <profiles>
         <profile>
-            <id>wildfly-release</id>
+            <id>maven-central-release</id>
+            <activation>
+                <property>
+                    <name>maven.central.release</name>
+                </property>
+            </activation>
+            <distributionManagement>
+                <snapshotRepository>
+                    <id>${sonatype.server.id}</id>
+                    <url>${repo.sonatype.url}/content/repositories/snapshots</url>
+                </snapshotRepository>
+                <repository>
+                    <id>${sonatype.server.id}</id>
+                    <url>${repo.sonatype.url}/service/local/staging/deploy/maven2/</url>
+                </repository>
+            </distributionManagement>
+            <properties>
+
+                <!-- Maven Central properties -->
+                <repo.sonatype.url>https://oss.sonatype.org</repo.sonatype.url>
+                <sonatype.server.id>ossrh-wildfly</sonatype.server.id>
+                <autoReleaseAfterClose>false</autoReleaseAfterClose>
+            </properties>
             <build>
                 <plugins>
                     <!-- Semantically ordered -->
