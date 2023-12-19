@@ -30,7 +30,7 @@
 
     <groupId>org.wildfly.tools</groupId>
     <artifactId>wildfly-parent</artifactId>
-    <version>1.0.3.Final-SNAPSHOT</version>
+    <version>1.0.3.Final</version>
     <packaging>pom</packaging>
 
     <url>https://wildfly.org</url>
@@ -97,7 +97,7 @@
                         <dependency>
                             <groupId>org.wildfly.tools</groupId>
                             <artifactId>ide-config</artifactId>
-                            <version>1.0.3.Final-SNAPSHOT</version>
+                            <version>1.0.3.Final</version>
                         </dependency>
                     </dependencies>
                     <configuration>
