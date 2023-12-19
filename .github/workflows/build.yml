@@ -7,12 +7,12 @@ on:
         paths:
             - '**/pom.xml'
             - 'ide-config/**'
-            - '.github/workflow/**'
+            - '.github/workflows/**'
     pull_request:
         paths:
             - '**/pom.xml'
             - 'ide-config/**'
-            - '.github/workflow/**'
+            - '.github/workflows/**'
 
 jobs:
     build:
