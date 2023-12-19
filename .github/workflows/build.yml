@@ -1,0 +1,79 @@
+name: WildFly Development Tools CI Build
+
+on:
+    push:
+        branches:
+            - main
+        paths:
+            - '**/pom.xml'
+            - 'ide-config/**'
+            - '.github/workflow/**'
+    pull_request:
+        paths:
+            - '**/pom.xml'
+            - 'ide-config/**'
+            - '.github/workflow/**'
+
+jobs:
+    build:
+        runs-on: ubuntu-latest
+        name: build
+
+        steps:
+            - name: Check out project
+              uses: actions/checkout@v4
+              with:
+                  path: wildfly-dev-tools
+
+            - name: Set up the JDKs
+              uses: actions/setup-java@v4
+              with:
+                  distribution: temurin
+                  architecture: x64
+                  java-version: |
+                      11
+                      17
+
+            - name: Install the snapshot
+              run: |
+                  cd wildfly-dev-tools
+                  mvn -B -ntp install
+
+            - name: Check out WildFly Plugin Tools
+              uses: actions/checkout@v4
+              with:
+                  repository: wildfly/wildfly-plugin-tools
+                  path: wildfly-plugin-tools
+
+            - name: Test WildFly Plugin Tools with updated parent
+              run: |
+                  cd wildfly-plugin-tools
+                  mvn -B -ntp versions:update-parent -DallowSnapshots=true -N
+                  git diff pom.xml
+                  mvn -B -ntp install -Djava11.home=${{env.JAVA_HOME_11_X64}}
+
+            - name: Check out WildFly Maven Plugin
+              uses: actions/checkout@v4
+              with:
+                  repository: wildfly/wildfly-maven-plugin
+                  path: wildfly-maven-plugin
+
+            - name: Test WildFly Maven Plugin with updated parent
+              run: |
+                  cd wildfly-maven-plugin
+                  mvn -B -ntp versions:update-parent -DallowSnapshots=true -N
+                  git diff pom.xml
+                  mvn -B -ntp install -Djava11.home=${{env.JAVA_HOME_11_X64}}
+
+            - name: Check out WildFly Arquillian
+              uses: actions/checkout@v4
+              with:
+                  repository: wildfly/wildfly-arquillian
+                  path: wildfly-arquillian
+
+            - name: Test WildFly Arquillian with updated parent
+              run: |
+                  cd wildfly-arquillian
+                  mvn -B -ntp versions:update-parent -DallowSnapshots=true -N
+                  git diff pom.xml
+                  mvn -B -ntp install -Djava11.home=${{env.JAVA_HOME_11_X64}}
