@@ -33,7 +33,7 @@
     <groupId>org.wildfly.tools</groupId>
     <artifactId>dev-tools</artifactId>
     <name>WildFly: Development Tools</name>
-    <version>1.0.3.Final</version>
+    <version>1.0.4.Final-SNAPSHOT</version>
     <packaging>pom</packaging>
 
     <url>https://wildfly.org</url>
