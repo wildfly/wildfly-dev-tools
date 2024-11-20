@@ -65,6 +65,14 @@
         <skipFormatting>false</skipFormatting>
         <maven.test.redirectTestOutputToFile>true</maven.test.redirectTestOutputToFile>
 
+        <!-- Require a minimum of Java 17 as the formatter and impsort plugins require it. However, default to
+             compiling to Java 11.
+         -->
+        <jdk.min.version>17</jdk.min.version>
+        <maven.compiler.release>11</maven.compiler.release>
+        <maven.compiler.source>${maven.compiler.release}</maven.compiler.source>
+        <maven.compiler.target>${maven.compiler.release}</maven.compiler.target>
+
         <version.formatter.maven.plugin>2.24.1</version.formatter.maven.plugin>
         <version.impsort.maven.plugin>1.12.0</version.impsort.maven.plugin>
         <version.nexus.staging.maven.plugin>1.7.0</version.nexus.staging.maven.plugin>
@@ -74,17 +82,13 @@
         <pluginManagement>
             <plugins>
                 <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-compiler-plugin</artifactId>
-                    <version>${version.compiler.plugin}</version>
                     <configuration>
                         <release>${maven.compiler.release}</release>
                     </configuration>
                 </plugin>
                 <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-surefire-plugin</artifactId>
-                    <version>${version.surefire.plugin}</version>
                     <configuration>
                         <redirectTestOutputToFile>${maven.test.redirectTestOutputToFile}</redirectTestOutputToFile>
                     </configuration>
