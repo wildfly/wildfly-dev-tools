@@ -73,7 +73,7 @@
         <maven.compiler.source>${maven.compiler.release}</maven.compiler.source>
         <maven.compiler.target>${maven.compiler.release}</maven.compiler.target>
 
-        <version.formatter.maven.plugin>2.25.0</version.formatter.maven.plugin>
+        <version.formatter.maven.plugin>2.26.0</version.formatter.maven.plugin>
         <version.impsort.maven.plugin>1.12.0</version.impsort.maven.plugin>
         <version.nexus.staging.maven.plugin>1.7.0</version.nexus.staging.maven.plugin>
     </properties>
